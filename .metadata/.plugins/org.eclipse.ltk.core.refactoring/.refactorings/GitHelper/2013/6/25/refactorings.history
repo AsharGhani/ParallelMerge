@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename method &apos;gitHelper.GitHelper.updateLocalRepositoryBranch(...)&apos; to &apos;UpdateLocalRepositoryBranch&apos;&#x0D;&#x0A;- Original project: &apos;GitHelper&apos;&#x0D;&#x0A;- Original element: &apos;gitHelper.GitHelper.updateLocalRepositoryBranch(...)&apos;&#x0D;&#x0A;- Renamed element: &apos;gitHelper.GitHelper.UpdateLocalRepositoryBranch(...)&apos;&#x0D;&#x0A;- Update references to refactored element" delegate="false" deprecate="false" description="Rename method &apos;updateLocalRepositoryBranch&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.method" input="/src&lt;gitHelper{GitHelper.java[GitHelper~updateLocalRepositoryBranch~QString;~QString;~QString;" name="UpdateLocalRepositoryBranch" references="true" stamp="1371416696164" version="1.0"/>
+</session>

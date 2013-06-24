@@ -1,0 +1,30 @@
+package gitHelper;
+
+public class BranchInfo 
+{
+	String user;
+	String repo;
+	String branchName;
+	String localDir;
+	String repositoryURL;
+
+	BranchInfo() {
+	}
+
+	BranchInfo
+	(
+	String user,
+	String repo,
+	String branchName,
+	String localDir,
+	String repositoryURL
+	) 
+	{
+		this.user = user;
+		this.repo = repo;
+		this.branchName = branchName;
+		this.localDir = localDir;
+		this.repositoryURL = repositoryURL;
+	}
+}
+

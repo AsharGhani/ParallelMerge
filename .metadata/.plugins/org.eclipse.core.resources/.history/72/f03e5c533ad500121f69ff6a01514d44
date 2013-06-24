@@ -1,0 +1,154 @@
+import java.io.File;
+
+public class MergeClient {
+
+	private static String usage = "MergeClient hostUserName hostRepository hostBranchName mergeBranchName"
+			+ "[-mU=mergeUserName] [-mR=mergeRepository]  [-CIP=controllerIP] [-CP=controllerPort] "
+			+ "\nWhere [] represents optional arguments";
+
+	private static String s_localBaseDir = "/";
+	
+	static class ClientSettings {
+		String hostUser;
+		String hostRepo;
+		String hostBranch;
+		String mergeUser;
+		String mergeRepo;
+		String mergebranch;
+		String controllerIP;
+		String controllerPort;
+	}
+
+	static class LocalRepository {
+		String userName;
+		String repositoryName;
+		String repositoryURL;
+		String localRepositoryDir;
+		String localBaseDir;
+		String[] populatedBranches;
+
+		LocalRepository(String localBaseDir) {
+			this.localBaseDir = localBaseDir;
+			Initialize();
+		}
+
+		boolean initialize() {
+			// detect existing repository in the base dir
+
+			// detect and add existing populated branches
+
+			return false;
+		}
+
+		boolean AddPopulatedBranch(String branchName) {
+			return false;
+		}
+
+		boolean Refresh() {
+			// Reset
+
+			// Re-initialize();
+			initialize();
+
+			// rescan existing branches;
+			return false;
+		}
+	}
+	
+	static void printParsingError(String invalidArgument)
+	{
+		System.out.println("Error! Invalid Argument: " + invalidArgument + "\n\nUsage:\n\n" + usage);
+	}
+
+	static boolean parseCommands(String[] args, ClientSettings settings)
+	{
+		if (args.length < 4)
+			return false;
+
+		settings.hostUser = args[0];
+		settings.hostRepo = args[1];
+		settings.hostBranch = args[2];
+		settings.mergebranch = args[3];
+
+		for (int i = 4; i < args.length; i++) 
+		{
+			if (args[i].toLowerCase().startsWith("-mu")) 
+			{
+				String[] splits = args[i].split("=");
+				if (splits.length < 2) {
+					printParsingError(args[i]);
+					return false;
+				}
+
+				settings.mergeUser = splits[1];
+			}
+			else if (args[i].toLowerCase().startsWith("-mr")) 
+			{
+				String[] splits = args[i].split("=");
+				if (splits.length < 2) {
+					printParsingError(args[i]);
+					return false;
+				}
+
+				settings.mergeRepo = splits[1];
+			}
+			else if (args[i].toLowerCase().startsWith("-cip")) 
+			{
+				String[] splits = args[i].split("=");
+				if (splits.length < 2) {
+					printParsingError(args[i]);
+					return false;
+				}
+
+				settings.controllerIP = splits[1];
+			}
+			else if (args[i].toLowerCase().startsWith("-cp")) 
+			{
+				String[] splits = args[i].split("=");
+				if (splits.length < 2) {
+					printParsingError(args[i]);
+					return false;
+				}
+
+				settings.controllerPort = splits[1];
+			}
+		}
+
+		return false;
+	}
+
+	static String getRepositoryDirectory (String user, String repository)
+	{
+		File repositoryDir = new File(s_localBaseDir + user + File.separatorChar + repository + File.separatorChar);
+		if (repositoryDir.exists())
+			return repositoryDir.getPath();
+		
+		return "";
+	}
+	
+	
+	public static void main(String[] args) {
+		// parse commands
+		ClientSettings settings = new ClientSettings();
+
+		if (!parseCommands(args, settings)) {
+			// TODO: notifyController if possible
+			return;
+		}
+
+		// check for repository existence and create if required
+		String repositoryDir = getRepositoryDirectory(settings.hostUser, settings.hostRepo);
+		
+		// TODO: add support for host and merge branches belonging to separate user repositories 
+		if (null != repositoryDir)
+		{
+			
+		}
+		// prepare the host and merge branches
+		
+		// perform merge
+		
+		// inform controller of the status
+
+	}
+}

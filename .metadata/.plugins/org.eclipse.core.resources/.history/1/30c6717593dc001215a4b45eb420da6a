@@ -1,0 +1,65 @@
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import util.RunIt;
+import util.RunIt.Output;
+
+public class SocketThread implements Runnable
+{
+	final String SCRIPTNAME = "clone-script.sh";
+	
+	String m_client;
+	ServerSocket m_socket;
+	String m_repositoryURL; 
+	String m_branchName;
+	
+	Thread m_thread;
+	public CloningThread (ServerSocket socket, String client, String User, String Repo)clusterInstanceName, String directoryName, String repositoryURL, String branchName)
+	{
+		m_clusterInstanceName = clusterInstanceName;
+		m_repositoryURL = repositoryURL; 
+		m_branchName = branchName;
+		
+		m_thread = new Thread(this);
+		System.out.println("Starting new thread " + m_clusterInstanceName + " " + m_repositoryURL + " " + m_branchName);
+		m_thread.start();
+	}
+	
+	@Override
+	public void run() 
+	{
+		String[] myArgsList = new String[6];//List<String> myArgsList = new ArrayList<String>();
+		myArgsList[0] = m_clusterInstanceName;
+		myArgsList[1] = "<";
+		myArgsList[2] = SCRIPTNAME;
+		myArgsList[3] = m_directoryName;
+		myArgsList[4] = m_repositoryURL;
+		myArgsList[5] = m_branchName;
+		
+		String command = "ssh " + m_directoryName + " " + m_repositoryURL + " " + m_branchName;
+		
+		Output output = null;
+		
+		//System.out.println(myArgsList.toArray(new String[0]));
+		
+		try {
+			output = RunIt.execute ("/usr/bin/ssh", myArgsList, "./", true);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error executing command: " + command);
+			e.printStackTrace();
+		}
+		
+		if (output== null || !output.getError().isEmpty())
+		{
+			System.out.println("Error executing command: " + command + "\n Error: " + output.getError());
+		}
+		
+		
+		// use the information in members to run the script
+		
+		
+	}
+
+}

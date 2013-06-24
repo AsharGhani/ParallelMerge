@@ -1,0 +1,53 @@
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SocketThread implements Runnable
+{
+	String m_client;
+	ServerSocket m_socket;
+	
+	Thread m_thread;
+	public SocketThread (ServerSocket socket, String client, String User, String Repo)
+	{
+		m_socket = socket;
+		m_client = client;
+	}
+	
+	@Override
+	public void run() 
+	{
+		String[] myArgsList = new String[6];//List<String> myArgsList = new ArrayList<String>();
+		myArgsList[0] = m_clusterInstanceName;
+		myArgsList[1] = "<";
+		myArgsList[2] = SCRIPTNAME;
+		myArgsList[3] = m_directoryName;
+		myArgsList[4] = m_repositoryURL;
+		myArgsList[5] = m_branchName;
+		
+		String command = "ssh " + m_directoryName + " " + m_repositoryURL + " " + m_branchName;
+		
+		Output output = null;
+		
+		//System.out.println(myArgsList.toArray(new String[0]));
+		
+		try {
+			output = RunIt.execute ("/usr/bin/ssh", myArgsList, "./", true);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error executing command: " + command);
+			e.printStackTrace();
+		}
+		
+		if (output== null || !output.getError().isEmpty())
+		{
+			System.out.println("Error executing command: " + command + "\n Error: " + output.getError());
+		}
+		
+		
+		// use the information in members to run the script
+		
+		
+	}
+
+}

@@ -1,0 +1,79 @@
+
+public class MergeClient 
+{
+	class ClientSettings
+	{
+		String user;
+		String repo;
+		String hostbranch;
+		String mergebranch;
+		String controllerIP;
+		String controllerPort; 
+	}
+	
+	class LocalRepository
+	{
+		String userName;
+		String repositoryName;
+		String repositoryURL;
+		String localRepositoryDir;
+		String localBaseDir;
+		String[] populatedBranches;
+		
+		LocalRepository (String localBaseDir)
+		{
+		this.localBaseDir = localBaseDir;
+		Initialize();
+		}
+		
+		boolean Initialize()
+		{
+			// detect existing repository in the base dir
+			
+			// detect and add existing populated branches
+			
+			return false;
+		}
+		
+		boolean AddPopulatedBranch(String branchName)
+		{
+			return false;
+		}
+		
+		boolean Refresh()
+		{
+			//Reset
+			
+			// Re-initialize();
+			Initialize();
+			
+			// rescan existing branches;
+			return false;
+		}
+	}
+
+static boolean parseCommands (String[] args, ClientSettings settings)
+{
+	
+	return false;
+}
+
+public static void main(String[] args)
+{
+	// parse commands
+	ClientSettings settings = new ClientSettings();
+	if (!parseCommands(args, settings))
+	{
+		// TODO: notifyController if possible
+
+		// TODO: output usage string
+		String usage = "MergeClient userName repository hostBranchName mergeRepositoryURL mergeBranchName [ControllerIP] [controllerPort] " +
+				       "\nWhere [] are optional arguments";
+		return;
+	}
+	
+	// check for repository and branch existence and create if required
+	
+	// update 
+}
+}

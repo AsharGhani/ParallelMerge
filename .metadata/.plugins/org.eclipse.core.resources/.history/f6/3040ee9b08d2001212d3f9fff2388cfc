@@ -1,0 +1,106 @@
+public class MergeClient {
+
+	private static String usage = "MergeClient hostUserName hostRepository hostBranchName mergeBranchName"
+			+ "[-mU=mergeUserName] [-mR=mergeRepository]  [-CIP=controllerIP] [-CP=controllerPort] "
+			+ "\nWhere [] are optional arguments";
+
+	public static class ClientSettings {
+		String hostUser;
+		String hostRepo;
+		String hostBranch;
+		String mergeUser;
+		String mergeRepo;
+		String mergebranch;
+		String controllerIP;
+		String controllerPort;
+	}
+
+	public static class LocalRepository {
+		String userName;
+		String repositoryName;
+		String repositoryURL;
+		String localRepositoryDir;
+		String localBaseDir;
+		String[] populatedBranches;
+
+		LocalRepository(String localBaseDir) {
+			this.localBaseDir = localBaseDir;
+			Initialize();
+		}
+
+		boolean Initialize() {
+			// detect existing repository in the base dir
+
+			// detect and add existing populated branches
+
+			return false;
+		}
+
+		boolean AddPopulatedBranch(String branchName) {
+			return false;
+		}
+
+		boolean Refresh() {
+			// Reset
+
+			// Re-initialize();
+			Initialize();
+
+			// rescan existing branches;
+			return false;
+		}
+	}
+	
+	void printParsingError(String invalidArgument)
+	{
+		System.out.println("Error! Invalid Argument: " + invalidArgument + "\n\nUsage:\n\n" + usage);
+	}
+
+	static boolean parseCommands (String[] args, ClientSettings settings)
+	{
+	if (args.length < 4)
+		return false;
+	
+	settings.hostUser = args[0];
+	settings.hostRepo = args[1];
+	settings.hostBranch = args[2];
+	settings.mergebranch = args[3];
+	
+	for (int i = 4; i < args.length; i++)
+	{
+		if (args[i].startsWith("-mU"))
+			{
+			String[] splits = args[i].split("="));
+			if (splits.length < 2)
+				{
+				printParsingError(args[i]);
+				return false;
+				}
+			
+			if (splits.length <)
+			settings.mergeUser = 
+			}
+	}
+
+		
+	return false;
+	}
+
+	public static void main(String[] args) {
+		// parse commands
+		ClientSettings settings = new ClientSettings();
+
+		if (!parseCommands(args, settings)) {
+			// TODO: notifyController if possible
+
+			// TODO: output usage string
+
+			
+			return;
+		}
+
+		// check for repository and branch existence and create if required
+
+		// update
+	}
+}

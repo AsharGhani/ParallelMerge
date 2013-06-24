@@ -1,0 +1,17 @@
+package gitHelper;
+
+import gitHelper.utils.*;
+import gitHelper.utils.Constants.*;
+import gitHelper.utils.RunIt.*;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class BranchMerger {
+	
+	
+
+}

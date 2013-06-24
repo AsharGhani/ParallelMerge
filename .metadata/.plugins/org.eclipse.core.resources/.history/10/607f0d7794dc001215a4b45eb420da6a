@@ -1,0 +1,35 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.util.ArrayList;
+import java.util.List;
+
+public class SocketThread implements Runnable
+{
+	String m_client;
+	ServerSocket m_serverSocket;
+	ClientSocket m_clientSocket;
+	
+	Thread m_thread;
+	public SocketThread (ServerSocket socket, String client)
+	{
+		m_serverSocket = socket;
+		m_client = client;
+	}
+	
+	@Override
+	public void run() 
+	{
+		try
+		{
+			m_clientSocket = m_serverSocket.accept();
+			BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+			String inputLine;
+			while((inputLine = in.readLine()) != null)
+			{
+				System.out.println(inputLine);
+			}
+		}
+	}
+
+}

@@ -1,0 +1,74 @@
+import java.util.List;
+
+enum MergeMode
+	{
+		HostAndMergeBranches,
+		AllBranches,
+		AllForks
+	}
+	
+	class BranchInfo
+	{
+		String user;
+		String repo;
+		String branchName;
+		String localDir;
+		String repositoryURL;
+		
+		BranchInfo (){}
+		
+		BranchInfo (String user, String repo, String branchName, String localDir, String repositoryURL)
+		{
+			this.user = user;
+			this.repo = repo;
+			this.branchName = branchName;
+			this.localDir = localDir;
+			this.repositoryURL = repositoryURL;
+		}
+	}
+	
+	class ClientSettings {
+		String user;
+		String repo;
+		List<BranchInfo> branches;
+		String controllerIP;
+		String controllerPort;
+		MergeMode mergeMode;
+	}
+	
+	/*static class LocalRepository {
+	String userName;
+	String repositoryName;
+	String repositoryURL;
+	String localRepositoryDir;
+	String localBaseDir;
+	String[] populatedBranches;
+
+	LocalRepository(String localBaseDir) {
+		this.localBaseDir = localBaseDir;
+		initialize();
+	}
+
+	boolean initialize() {
+		// detect existing repository in the base dir
+
+		// detect and add existing populated branches
+
+		return false;
+	}
+
+	boolean AddPopulatedBranch(String branchName) {
+		return false;
+	}
+
+	boolean Refresh() {
+		// Reset
+
+		// Re-initialize();
+		initialize();
+
+		// rescan existing branches;
+		return false;
+	}
+}
+*/

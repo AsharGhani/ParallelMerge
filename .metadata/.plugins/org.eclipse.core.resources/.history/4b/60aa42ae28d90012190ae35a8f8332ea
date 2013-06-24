@@ -1,0 +1,26 @@
+
+public class MergeController 
+{
+	private static String s_usage = "MergeController userName repository [-HBN=hostBranchName|-allBranches|-allforks] [-MBN=mergeBranchName]"
+			+ "[-MU=mergeUserName] [-MR=mergeRepository]  [-CIP=controllerIP] [-CP=controllerPort] "
+			+ "\nWhere [] represents optional arguments";
+	
+	public bool parseCommands(String[] args)
+	{
+		
+	}
+	
+	static void printParsingError (String invalidArgument)
+	{
+		System.out.println ("Error! Invalid Argument: " + invalidArgument + "\n\nUsage:\n\n" + usage);
+	}
+	
+	public static void main (String[] args)
+	{
+		if (!parseCommands (args))
+			return;
+		
+		if (args.length == 0)
+			printParsingError(null);
+	}
+}

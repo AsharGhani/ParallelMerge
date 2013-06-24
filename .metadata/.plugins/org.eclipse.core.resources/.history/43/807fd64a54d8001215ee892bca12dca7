@@ -1,0 +1,37 @@
+import java.util.List;
+
+enum MergeMode
+	{
+		HostAndMergeBranches,
+		AllBranches,
+		AllForks
+	}
+	
+	class BranchInfo
+	{
+		String user;
+		String repo;
+		String branchName;
+		String localDir;
+		String repositoryURL;
+		
+		BranchInfo (){}
+		
+		BranchInfo (String user, String repo, String branchName, String localDir, String repositoryURL)
+		{
+			this.user = user;
+			this.repo = repo;
+			this.branchName = branchName;
+			this.localDir = localDir;
+			this.repositoryURL = repositoryURL;
+		}
+	}
+	
+	class ClientSettings {
+		String user;
+		String repo;
+		List<BranchInfo> branches;
+		String controllerIP;
+		String controllerPort;
+		MergeMode mergeMode;
+	}

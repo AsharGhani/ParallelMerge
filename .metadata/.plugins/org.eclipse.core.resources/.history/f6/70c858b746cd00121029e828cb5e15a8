@@ -1,0 +1,64 @@
+package gitHelper;
+
+import gitHelper.utils.*;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+
+import javax.swing.JLabel;
+
+
+import java.awt.GridLayout;
+import java.util.List;
+
+public class MergeResultsDisplay {
+	private int m_x;
+	private int m_y;
+	private JFrame frame = new JFrame();
+	private JLabel[][] grid;
+	
+	public MergeResultsDisplay(String[] branchNames, boolean[][] results, int size)
+	{
+	frame.setLayout(new GridLayout(size+1,size+1));
+	
+	grid = new JLabel[size][size]; //allocate the size of grid
+	
+	String iconSame = "D:/src/SWAG/crystal/crystalvc/src/crystal/client/images/32X32/must/same.png";
+	String conflict = "D:/src/SWAG/crystal/crystalvc/src/crystal/client/images/32X32/must/mergeconflict.png";
+	
+	frame.add(new JLabel(" "));
+	
+	for (String branch : branchNames)
+	{
+		frame.add(new JLabel(branch + " "));
+	}
+	
+    for(int y=0; y<size; y++)
+    { 
+		frame.add(new JLabel(branchNames[y]));
+        for(int x=0; x<size; x++)
+        {
+        	
+        	if (y == x)
+        		{
+        		frame.add(new JLabel("="));
+        		continue;
+        		}
+        	
+        	if (results[x][y])
+        		grid[x][y] = new JLabel (new ImageIcon (iconSame));
+    		else
+    			grid[x][y] = new JLabel (new ImageIcon (conflict));
+    			
+            frame.add (grid[x][y]); //add to grid
+        }
+    }
+    
+	frame.setName("Merge Status");
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	frame.pack();
+	frame.setVisible(true);
+	}
+	
+	
+}

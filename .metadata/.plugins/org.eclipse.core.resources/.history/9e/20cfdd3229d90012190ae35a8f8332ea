@@ -1,0 +1,16 @@
+
+public class MergeController 
+{
+	private static String s_usage = "MergeController fileNameForClientIPAddresses" ;
+	
+	static void printParsingError (String invalidArgument)
+	{
+		System.out.println ("Error! Invalid Argument: " + ((null != invalidArgument)?invalidArgument:"") + "\n\nUsage:\n\n" + s_usage);
+	}
+	
+	public static void main (String[] args)
+	{		
+		if (args.length == 0)
+			printParsingError(null);
+	}
+}
