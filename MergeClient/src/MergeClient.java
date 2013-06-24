@@ -196,7 +196,7 @@ public class MergeClient {
 	{
 		File repositoryDir = new File (s_localBaseDir + user + File.separatorChar + repository + File.separatorChar);
 		if (!repositoryDir.exists())
-			repositoryDir.mkdir();
+			repositoryDir.mkdirs();
 		
 		String absolutePath = repositoryDir.getAbsolutePath();
 		
@@ -275,7 +275,7 @@ public class MergeClient {
 													 );
 		
 		// Create or Update the master branch directory
-		/*try 
+		try 
 		{
 			gitHelper.GitHelper.updateLocalRepositoryBranchAndCheckCacheError (masterBranchInfo.repositoryURL, masterBranchDir, null);
 		} 
@@ -288,7 +288,7 @@ public class MergeClient {
 		{
 			e.printStackTrace();
 			return null;
-		}*/
+		}
 		
 		masterBranchList.add(masterBranchInfo);
 		

@@ -524,7 +524,7 @@ public class GitHelper {
 			return branchesList;
 		}
 
-		branchesList.add(repo.getUrl());
+		branchesList.add(repo.getHtmlUrl());
 		
 		for(RepositoryBranch repoBranch : branches)
 		{
